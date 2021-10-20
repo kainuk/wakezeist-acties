@@ -7,3 +7,6 @@ Version: 5.10.2
 Author: Klaas Eikelboom
 Author URI: https://www.eikelboom.com
 */
+add_shortcode('wakes', function(){
+  return '<p>Testresultaat Wakes (het is gelukt)</p>';
+});
