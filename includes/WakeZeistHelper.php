@@ -33,11 +33,16 @@ class WakeZeistHelper {
   /**
    * @return false|string
    */
-  public function volgendeWake(){
-    $today = new DateTime();
-    $firstSunday = (new DateTime())->add(DateInterval::createFromDateString('first sunday of this month'));
-    $firstNextSunday = (new DateTime())->add(DateInterval::createFromDateString('first sunday of next month'));
-    if($firstSunday>=$today) {
+  public function volgendeWake($n = 0 ){
+    if($n) {
+      $calcDate = new DateTime("today +$n month");
+    } else {
+      $calcDate = new DateTime('today');
+    }
+
+    $firstSunday = $calcDate->add(DateInterval::createFromDateString('first sunday of this month'));
+    $firstNextSunday = $calcDate->add(DateInterval::createFromDateString('first sunday of next month'));
+    if($firstSunday>=$calcDate) {
       return $this->nlFormatter->format($firstSunday);
     } else {
       return $this->nlFormatter->format($firstNextSunday);

@@ -13,8 +13,9 @@ if (!defined('WPINC')) {
 }
 require_once __DIR__ . '/includes/WakeZeistHelper.php';
 
-add_shortcode('volgende_wake', function () {
-  return WakeZeistHelper::instance()->volgendeWake();
+add_shortcode('volgende_wake', function ($atts) {
+  $args = shortcode_atts(['n' => 0], $atts);
+  return WakeZeistHelper::instance()->volgendeWake($args['n']);
 });
 
 add_shortcode('jaarindex', function ($atts) {
